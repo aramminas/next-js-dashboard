@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { fetchCustomerById } from '@/app/lib/data';
 import EditForm from '@/app/ui/customers/edit-form';
 import Breadcrumbs from '@/app/ui/invoices/breadcrumbs';
@@ -14,6 +15,10 @@ export default async function EditCustomer({
 }) {
   const id = params.id;
   const customer = await fetchCustomerById(id);
+
+  if (!customer) {
+    notFound();
+  }
 
   return (
     <main>

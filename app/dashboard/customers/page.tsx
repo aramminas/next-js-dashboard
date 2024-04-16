@@ -22,11 +22,7 @@ export default async function Customers({
 
   return (
     <Suspense key={query + currentPage} fallback={<CustomersTableSkeleton />}>
-      <CustomersTable
-        customers={customers}
-        query={query}
-        currentPage={currentPage}
-      />
+      <CustomersTable customers={customers} query={query} />
     </Suspense>
   );
 }

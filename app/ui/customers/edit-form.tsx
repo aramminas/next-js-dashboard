@@ -5,17 +5,11 @@ import Image from 'next/image';
 import { useFormState } from 'react-dom';
 import { Button } from '@/app/ui/button';
 import { defaultImage } from '@/app/constants';
+import { Customer } from '@/app/lib/definitions';
 import { updateCustomer } from '@/app/lib/customers-actions';
 import { AtSymbolIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 
-interface Customers {
-  id: string;
-  name: string;
-  email: string;
-  image_url: string;
-}
-
-export default function EditForm({ customer }: { customer: Customers }) {
+export default function EditForm({ customer }: { customer: Customer }) {
   const initialState = { message: null, errors: {} };
   const updateCustomerWithId = updateCustomer.bind(null, customer.id);
   const [state, dispatch] = useFormState(updateCustomerWithId, initialState);

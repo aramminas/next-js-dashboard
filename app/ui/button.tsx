@@ -38,7 +38,7 @@ export function CreateButton({
   );
 }
 
-export function UpdateButton({ id, subPath }: { id: number; subPath: string }) {
+export function UpdateButton({ id, subPath }: { id: string; subPath: string }) {
   return (
     <Link
       href={`/dashboard/${subPath}/${id}/edit`}

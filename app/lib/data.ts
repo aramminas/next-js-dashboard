@@ -9,6 +9,7 @@ import {
   LatestInvoiceRaw,
   User,
   Revenue,
+  Customer,
 } from './definitions';
 
 export async function fetchRevenue() {
@@ -255,7 +256,7 @@ export async function fetchCustomersPages(query: string) {
 export async function fetchCustomerById(id: string) {
   noStore();
   try {
-    const data = await sql<CustomerField>`
+    const data = await sql<Customer>`
       SELECT
         id,
         name,
@@ -265,7 +266,7 @@ export async function fetchCustomerById(id: string) {
       WHERE customers.id = ${id};
     `;
 
-    const customer = data?.rows?.length && data.rows[0];
+    const customer = !!data?.rows?.length && data.rows[0];
     return customer;
   } catch (err) {
     console.error('Database Error:', err);
