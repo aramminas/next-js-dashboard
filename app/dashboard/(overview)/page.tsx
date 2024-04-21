@@ -8,7 +8,7 @@ import {
   CardsSkeleton,
   RevenueChartSkeleton,
   LatestInvoicesSkeleton,
-} from '@/app/ui/skeletons';
+} from '@/app/ui/basic/skeletons';
 
 export const metadata: Metadata = {
   title: 'Dashboard',

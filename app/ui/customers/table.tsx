@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import { lusitana } from '@/app/ui/fonts';
-import Search from '@/app/ui/search';
+import Search from '@/app/ui/basic/search';
 import {
   CustomersTableType,
   FormattedCustomersTable,
 } from '@/app/lib/definitions';
 import { fetchCustomersPages } from '@/app/lib/data';
 import Pagination from '@/app/ui/invoices/pagination';
-import { CreateButton, UpdateButton } from '@/app/ui/button';
+import { CreateButton, UpdateButton } from '@/app/ui/basic/button';
 import { DeleteCustomer } from './buttons';
 
 export default async function CustomersTable({

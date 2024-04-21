@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useFormState } from 'react-dom';
-import { Button } from '@/app/ui/button';
+import { Button } from '@/app/ui/basic/button';
 import { defaultImage } from '@/app/constants';
 import { Customer } from '@/app/lib/definitions';
 import { updateCustomer } from '@/app/lib/customers-actions';

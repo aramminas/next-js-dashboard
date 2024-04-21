@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@/app/ui/button';
+import { Button } from '@/app/ui/basic/button';
 import { lusitana } from '@/app/ui/fonts';
 import { authenticate } from '@/app/lib/actions';
 import { useFormState, useFormStatus } from 'react-dom';

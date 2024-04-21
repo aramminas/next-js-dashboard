@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Button } from '@/app/ui/button';
+import { Button } from '@/app/ui/basic/button';
 import { useFormState } from 'react-dom';
 import { CustomerField } from '@/app/lib/definitions';
 import { createInvoice } from '@/app/lib/invoices-actions';
