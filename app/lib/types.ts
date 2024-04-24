@@ -1,5 +1,5 @@
 export type PageProps = {
-  searchParams?: {
+  searchParams: {
     query?: string;
     page?: string;
   };

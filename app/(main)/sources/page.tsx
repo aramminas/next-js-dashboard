@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getSources } from '@/app/lib/api';
-import SourceCard from '@/app/ui/components/categories/sourceCard';
-import Pagination from '@/app/ui/basic/pagination';
 import { PageProps } from '@/app/lib/types';
+import { SourceType } from '@/app/lib/apiTypes';
+import Pagination from '@/app/ui/basic/pagination';
+import SourceCard from '@/app/ui/components/sources/sourceCard';
 
 export const metadata: Metadata = {
   title: 'Sources',
@@ -28,7 +29,7 @@ export default async function Sources({ searchParams }: PageProps) {
         <p>Below is a list of all the sources of the news site.</p>
       </div>
       <div className="grid grid-cols-1 grid-rows-1 gap-4 md:grid-cols-3">
-        {data.map((source) => (
+        {data.map((source: SourceType) => (
           <SourceCard key={source.source_id} source={source} />
         ))}
       </div>

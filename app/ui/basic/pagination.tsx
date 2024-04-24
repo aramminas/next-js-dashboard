@@ -39,7 +39,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
 
             return (
               <PaginationNumber
-                key={page + Math.random()}
+                key={`${page}-${Math.random()}`}
                 href={createPageURL(page)}
                 page={page}
                 position={position}

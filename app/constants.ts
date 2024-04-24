@@ -28,7 +28,7 @@ export const links = [
   },
 ];
 
-export const locales = {
+export const locales: { [key: string]: string } = {
   ar: 'Argentina',
   am: 'Armenia',
   au: 'Australia',
@@ -86,7 +86,7 @@ export const locales = {
   ve: 'Venezuela',
 };
 
-export const languages = {
+export const languages: { [key: string]: string } = {
   ar: 'Arabic',
   bg: 'Bulgarian',
   bn: 'Bengali',

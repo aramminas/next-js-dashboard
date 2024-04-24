@@ -45,7 +45,7 @@ export default function CategoryCard({ category }: { category: CategoryType }) {
             {categories.map((category) => {
               return (
                 <span
-                  key={category + Math.random()}
+                  key={`${category}-${Math.random()}`}
                   className="mb-2 mr-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700"
                 >
                   #{category}
