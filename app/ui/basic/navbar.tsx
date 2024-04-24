@@ -8,7 +8,7 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
 import { links } from '@/app/constants';
-import AcmeLogo from '@/app/ui/basic/acme-logo';
+import NewsLogo from '@/app/ui/basic/news-logo';
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -23,7 +23,7 @@ const Navbar = () => {
             href="/"
             rel="noreferrer"
           >
-            <AcmeLogo />
+            <NewsLogo />
           </Link>
         </h1>
       </div>

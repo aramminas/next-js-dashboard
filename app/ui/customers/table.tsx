@@ -6,7 +6,7 @@ import {
   FormattedCustomersTable,
 } from '@/app/lib/definitions';
 import { fetchCustomersPages } from '@/app/lib/data';
-import Pagination from '@/app/ui/invoices/pagination';
+import Pagination from '@/app/ui/basic/pagination';
 import { CreateButton, UpdateButton } from '@/app/ui/basic/button';
 import { DeleteCustomer } from './buttons';
 

@@ -3,9 +3,10 @@ import { Suspense } from 'react';
 import { lusitana } from '@/app/ui/fonts';
 import Search from '@/app/ui/basic/search';
 import Table from '@/app/ui/invoices/table';
+import { PageProps } from '@/app/lib/types';
 import { CreateButton } from '@/app/ui/basic/button';
 import { fetchInvoicesPages } from '@/app/lib/data';
-import Pagination from '@/app/ui/invoices/pagination';
+import Pagination from '@/app/ui/basic/pagination';
 import { InvoicesTableSkeleton } from '@/app/ui/basic/skeletons';
 
 export const metadata: Metadata = {
@@ -15,16 +16,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Invoices({
-  searchParams,
-}: {
-  searchParams?: {
-    query?: string;
-    page?: string;
-  };
-}) {
-  const query = searchParams?.query || '';
-  const currentPage = Number(searchParams?.page) || 1;
+export default async function Invoices({ searchParams }: PageProps) {
+  const { query = '', page = '1' } = searchParams;
   const totalPages = await fetchInvoicesPages(query);
 
   return (
@@ -36,8 +29,8 @@ export default async function Invoices({
         <Search placeholder="Search invoices..." />
         <CreateButton subPath={'invoices'} title={'Create Invoice'} />
       </div>
-      <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
-        <Table query={query} currentPage={currentPage} />
+      <Suspense key={query + page} fallback={<InvoicesTableSkeleton />}>
+        <Table query={query} currentPage={+page} />
       </Suspense>
       <div className="mt-5 flex w-full justify-center">
         <Pagination totalPages={totalPages} />

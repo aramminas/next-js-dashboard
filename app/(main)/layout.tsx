@@ -1,6 +1,7 @@
 import '@/app/ui/global.css';
 import { Metadata } from 'next';
 import Navbar from '@/app/ui/basic/navbar';
+import Footer from '@/app/ui/basic/footer';
 
 export const metadata: Metadata = {
   title: {
@@ -15,6 +16,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <main className="flex min-h-screen flex-col">
       <Navbar />
       {children}
+      <Footer />
     </main>
   );
 }

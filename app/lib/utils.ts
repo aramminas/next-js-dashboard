@@ -67,3 +67,6 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     totalPages,
   ];
 };
+
+export const link = (site: string) =>
+  site.indexOf('://') === -1 ? `http://${site}` : site;
