@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '@/app/ui/basic/navbar';
-import { lusitana, preahvihear } from '@/app/ui/fonts';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import { lusitana, preahvihear } from '@/app/ui/styles/fonts';
 
 export default function Home() {
   return (

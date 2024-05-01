@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@/app/ui/basic/button';
-import { lusitana } from '@/app/ui/fonts';
+import { lusitana } from '@/app/ui/styles/fonts';
 import { authenticate } from '@/app/lib/actions';
 import { useFormState, useFormStatus } from 'react-dom';
 import { ArrowRightIcon } from '@heroicons/react/20/solid';

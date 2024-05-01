@@ -2,14 +2,22 @@
 
 import clsx from 'clsx';
 import Link from 'next/link';
+import { maxPageCount } from '@/app/constants';
 import { generatePagination } from '@/app/lib/utils';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 
-export default function Pagination({ totalPages }: { totalPages: number }) {
+export default function Pagination({
+  totalPages,
+  bigNum = false,
+}: {
+  totalPages: number;
+  bigNum?: boolean;
+}) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get('page')) || 1;
+  const maxTotalPages = totalPages > maxPageCount ? maxPageCount : totalPages;
 
   const createPageURL = (pageNumber: number | string) => {
     const params = new URLSearchParams(searchParams);
@@ -17,7 +25,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
     return `${pathname}?${params.toString()}`;
   };
 
-  const allPages = generatePagination(currentPage, totalPages);
+  const allPages = generatePagination(currentPage, maxTotalPages);
 
   return (
     <>
@@ -44,6 +52,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
                 page={page}
                 position={position}
                 isActive={currentPage === page}
+                bigNum={bigNum}
               />
             );
           })}
@@ -52,7 +61,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
         <PaginationArrow
           direction="right"
           href={createPageURL(currentPage + 1)}
-          isDisabled={currentPage >= totalPages}
+          isDisabled={currentPage >= maxTotalPages}
         />
       </div>
     </>
@@ -64,11 +73,13 @@ function PaginationNumber({
   href,
   isActive,
   position,
+  bigNum,
 }: {
   page: number | string;
   href: string;
   position?: 'first' | 'last' | 'middle' | 'single';
   isActive: boolean;
+  bigNum: boolean;
 }) {
   const className = clsx(
     'flex h-10 w-10 items-center justify-center text-sm border',
@@ -78,6 +89,7 @@ function PaginationNumber({
       'z-10 bg-blue-600 border-blue-600 text-white': isActive,
       'hover:bg-gray-100': !isActive && position !== 'middle',
       'text-gray-300': position === 'middle',
+      'w-[60px]': bigNum,
     },
   );
 

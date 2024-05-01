@@ -138,3 +138,5 @@ export const categories = {
   food: 'food',
   travel: 'travel',
 };
+
+export const maxPageCount = 5000;

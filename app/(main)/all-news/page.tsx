@@ -5,5 +5,7 @@ export const metadata: Metadata = {
 };
 
 export default function AllNews() {
-  return <div>All news</div>;
+  return (
+    <section className="container mx-auto mt-[35px] flex-1">All news</section>
+  );
 }

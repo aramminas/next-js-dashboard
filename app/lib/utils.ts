@@ -1,4 +1,5 @@
-import { Revenue } from './definitions';
+import { Revenue } from '@/app/lib/definitions';
+import { PublishedDate } from '@/app/lib/apiTypes';
 
 export const formatCurrency = (amount: number) => {
   return (amount / 100).toLocaleString('en-US', {
@@ -70,3 +71,40 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
 
 export const link = (site: string) =>
   site.indexOf('://') === -1 ? `http://${site}` : site;
+
+export function setDate(published: PublishedDate) {
+  const formatter = new Intl.DateTimeFormat('fr-CA', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  });
+
+  if (published.publishedOn) {
+    const publishedOn = formatter.format(new Date(published.publishedOn));
+    return `&published_on=${publishedOn}`;
+  }
+
+  if (published.publishedAfter) {
+    const publishedAfter = formatter.format(new Date(published.publishedAfter));
+    return `&published_after=${publishedAfter}`;
+  }
+
+  if (published.publishedBefore) {
+    const publishedBefore = formatter.format(
+      new Date(published.publishedBefore),
+    );
+
+    // set the period to one month
+    const date = new Date(publishedBefore);
+    date.setMonth(date.getMonth() - 1);
+    const publishedAfter = formatter.format(date);
+    return `&published_after=${publishedAfter}&published_before=${publishedBefore}`;
+  }
+
+  // if no date is set, set the date a month ago
+  const date = new Date();
+  date.setMonth(date.getMonth() - 1);
+  const publishedAfter = formatter.format(date);
+
+  return `&published_after=${publishedAfter}`;
+}

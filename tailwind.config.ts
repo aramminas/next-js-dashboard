@@ -25,6 +25,13 @@ const config = {
           transform: 'translateX(100%)',
         },
       },
+      roll: {
+        '0%': { transform: 'rotateX(45deg) rotateY(-45deg)' },
+        '25%': { transform: 'rotateX(-45deg) rotateY(-45deg)' },
+        '50%': { transform: 'rotateX(45deg) rotateY(45deg)' },
+        '75%': { transform: 'rotateX(-45deg) rotateY(45deg)' },
+        '100%': { transform: 'rotateX(45deg) rotateY(-45deg)' },
+      },
     },
     container: {
       padding: {
@@ -33,6 +40,9 @@ const config = {
         lg: '4rem',
         xl: '5rem',
         '2xl': '6rem',
+      },
+      animation: {
+        roll: 'roll 5s infinite',
       },
     },
   },

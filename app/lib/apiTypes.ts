@@ -15,7 +15,7 @@ export type SourceType = {
   categories: string[];
 };
 
-export type CategoryType = {
+export type NewsType = {
   uuid: string;
   title: string;
   description: string;
@@ -28,4 +28,34 @@ export type CategoryType = {
   source: string;
   categories: string[];
   relevance_score: null | string;
+};
+
+export type NewsData = {
+  meta: MetaData;
+  data: NewsType[];
+  error?: NewsError;
+};
+
+export type NewsError = {
+  code: string;
+  message: string;
+};
+
+export type MetaData = {
+  found: number;
+  returned: number;
+  limit: number;
+  page: number;
+};
+
+export type PublishedDate = {
+  publishedOn?: string;
+  publishedAfter?: string;
+  publishedBefore?: string;
+};
+
+export const initPublishedData: PublishedDate = {
+  publishedOn: '',
+  publishedAfter: '',
+  publishedBefore: '',
 };

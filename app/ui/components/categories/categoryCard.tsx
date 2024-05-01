@@ -1,8 +1,8 @@
 import { link } from '@/app/lib/utils';
-import { CategoryType } from '@/app/lib/apiTypes';
+import { NewsType } from '@/app/lib/apiTypes';
 import { CalendarDaysIcon } from '@heroicons/react/24/outline';
 
-export default function CategoryCard({ category }: { category: CategoryType }) {
+export default function CategoryCard({ category }: { category: NewsType }) {
   const {
     title,
     description,

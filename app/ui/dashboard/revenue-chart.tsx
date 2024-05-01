@@ -1,4 +1,4 @@
-import { lusitana } from '@/app/ui/fonts';
+import { lusitana } from '@/app/ui/styles/fonts';
 import { fetchRevenue } from '@/app/lib/data';
 import { Revenue } from '@/app/lib/definitions';
 import { generateYAxis } from '@/app/lib/utils';
@@ -7,8 +7,6 @@ import { CalendarIcon } from '@heroicons/react/24/outline';
 export default async function RevenueChart() {
   const revenue: Revenue[] = await fetchRevenue();
   const chartHeight = 350;
-  // NOTE: comment in this code when you get to this point in the course
-
   const { yAxisLabels, topLabel } = generateYAxis(revenue);
 
   if (!revenue || revenue.length === 0) {
@@ -20,8 +18,6 @@ export default async function RevenueChart() {
       <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
         Recent Revenue
       </h2>
-      {/* NOTE: comment in this code when you get to this point in the course */}
-
       <div className="rounded-xl bg-gray-50 p-4">
         <div className="mt-0 grid grid-cols-12 items-end gap-2 rounded-md bg-white p-4 sm:grid-cols-13 md:gap-4">
           <div

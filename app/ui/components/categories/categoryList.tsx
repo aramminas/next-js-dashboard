@@ -1,10 +1,10 @@
-import { CategoryType } from '@/app/lib/apiTypes';
+import { NewsType } from '@/app/lib/apiTypes';
 import CategoryCard from '@/app/ui/components/categories/categoryCard';
 
 export default function CategoryList({
   categories,
 }: {
-  categories: CategoryType[];
+  categories: NewsType[];
 }) {
   return (
     <section className="mb-[50px]">
