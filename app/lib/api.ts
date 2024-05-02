@@ -1,7 +1,7 @@
 'use server';
 
 import { setDate } from './utils';
-import { API_TYPES, initPublishedData } from './apiTypes';
+import { API_TYPES, initPublishedData } from './api-types';
 
 const API_URL = process.env.apo_url;
 const API_TOKEN = process.env.api_token;

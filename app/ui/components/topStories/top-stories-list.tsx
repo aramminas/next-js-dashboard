@@ -1,5 +1,5 @@
-import { NewsType } from '@/app/lib/apiTypes';
-import TopStoriesListItem from '@/app/ui/components/topStories/topStoriesListItem';
+import { NewsType } from '@/app/lib/api-types';
+import TopStoriesListItem from '@/app/ui/components/topStories/top-stories-list-item';
 
 export default async function TopStoriesList({
   stories,

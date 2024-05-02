@@ -1,8 +1,8 @@
 import { notFound } from 'next/navigation';
-import { NewsType, NewsData } from '@/app/lib/apiTypes';
+import { NewsType, NewsData } from '@/app/lib/api-types';
 import { getNewsByUUID, getSimilarNews } from '@/app/lib/api';
-import SingleNews from '@/app/ui/components/news/singleNews';
-import SimilarNews from '@/app/ui/components/news/similarNews';
+import SingleNews from '@/app/ui/components/news/single-news';
+import SimilarNews from '@/app/ui/components/news/similar-news';
 
 export default async function News({ params }: { params: { uuid: string } }) {
   const data: NewsType = await getNewsByUUID(params.uuid);

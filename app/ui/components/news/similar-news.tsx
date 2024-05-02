@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import Link from 'next/link';
-import { NewsType } from '@/app/lib/apiTypes';
+import { NewsType } from '@/app/lib/api-types';
 import { formatDateToLocal } from '@/app/lib/utils';
 import { preahvihear } from '@/app/ui/styles/fonts';
 

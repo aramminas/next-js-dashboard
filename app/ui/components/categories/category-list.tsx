@@ -1,5 +1,5 @@
-import { NewsType } from '@/app/lib/apiTypes';
-import CategoryCard from '@/app/ui/components/categories/categoryCard';
+import { NewsType } from '@/app/lib/api-types';
+import CategoryCard from '@/app/ui/components/categories/category-card';
 
 export default function CategoryList({
   categories,

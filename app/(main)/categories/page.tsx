@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getNewsByCategory } from '@/app/lib/api';
 import Pagination from '@/app/ui/basic/pagination';
-import CategoryList from '@/app/ui/components/categories/categoryList';
+import CategoryList from '@/app/ui/components/categories/category-list';
 
 export const metadata: Metadata = {
   title: 'Categories',

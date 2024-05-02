@@ -1,5 +1,5 @@
 import { Revenue } from '@/app/lib/definitions';
-import { PublishedDate } from '@/app/lib/apiTypes';
+import { PublishedDate } from '@/app/lib/api-types';
 
 export const formatCurrency = (amount: number) => {
   return (amount / 100).toLocaleString('en-US', {

@@ -1,5 +1,5 @@
 import { link } from '@/app/lib/utils';
-import { NewsType } from '@/app/lib/apiTypes';
+import { NewsType } from '@/app/lib/api-types';
 import { CalendarDaysIcon } from '@heroicons/react/24/outline';
 
 export default function CategoryCard({ category }: { category: NewsType }) {

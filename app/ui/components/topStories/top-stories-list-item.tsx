@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { NewsType } from '@/app/lib/apiTypes';
+import { NewsType } from '@/app/lib/api-types';
 import { preahvihear } from '@/app/ui/styles/fonts';
 import { formatDateToLocal, link } from '@/app/lib/utils';
 

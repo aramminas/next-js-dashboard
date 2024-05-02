@@ -1,4 +1,4 @@
-import PingDot from '@/app/ui/basic/loading/pingDot';
+import PingDot from '@/app/ui/basic/loading/ping-dot';
 
 export default function LoadingText() {
   return (

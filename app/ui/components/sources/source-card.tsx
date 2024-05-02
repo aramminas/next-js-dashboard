@@ -1,5 +1,5 @@
 import { link } from '@/app/lib/utils';
-import { SourceType } from '@/app/lib/apiTypes';
+import { SourceType } from '@/app/lib/api-types';
 import { preahvihear } from '@/app/ui/styles/fonts';
 import { languages, locales } from '@/app/constants';
 

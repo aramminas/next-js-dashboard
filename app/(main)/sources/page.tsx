@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getSources } from '@/app/lib/api';
 import { PageProps } from '@/app/lib/types';
-import { SourceType } from '@/app/lib/apiTypes';
+import { SourceType } from '@/app/lib/api-types';
 import Pagination from '@/app/ui/basic/pagination';
-import SourceCard from '@/app/ui/components/sources/sourceCard';
+import SourceCard from '@/app/ui/components/sources/source-card';
 
 export const metadata: Metadata = {
   title: 'Sources',

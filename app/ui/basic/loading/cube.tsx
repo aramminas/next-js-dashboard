@@ -1,5 +1,5 @@
 import NewsLogo from '@/app/ui/basic/news-logo';
-import LoadingText from '@/app/ui/basic/loading/loadingText';
+import LoadingText from '@/app/ui/basic/loading/loading-text';
 
 export default function Cube() {
   return (
