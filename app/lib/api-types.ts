@@ -59,3 +59,10 @@ export const initPublishedData: PublishedDate = {
   publishedAfter: '',
   publishedBefore: '',
 };
+
+export type SearchState = {
+  errors?: {
+    search?: string[];
+  };
+  message?: string | null;
+};

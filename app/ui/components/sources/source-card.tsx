@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { link } from '@/app/lib/utils';
 import { SourceType } from '@/app/lib/api-types';
 import { preahvihear } from '@/app/ui/styles/fonts';
@@ -37,7 +38,7 @@ export default function SourceCard({ source }: { source: SourceType }) {
         Categories:
         {categories?.map((category, index) => {
           return (
-            <a
+            <Link
               href={`/categories?category=${category}`}
               key={`${source_id}-${category}`}
             >
@@ -45,7 +46,7 @@ export default function SourceCard({ source }: { source: SourceType }) {
               <span className="pl-1 capitalize hover:text-gray-700">
                 {category}
               </span>
-            </a>
+            </Link>
           );
         })}
       </p>

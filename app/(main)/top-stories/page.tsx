@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTopStories } from '@/app/lib/api';
 import Pagination from '@/app/ui/basic/pagination';
-import TopStoriesList from '@/app/ui/components/topStories/top-stories-list';
+import TopStoriesList from '@/app/ui/components/top-stories/top-stories-list';
 
 export const metadata: Metadata = {
   title: 'Top stories',

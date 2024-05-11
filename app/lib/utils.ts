@@ -1,5 +1,8 @@
+import { limit } from '@/app/constants';
+import { MonthType } from '@/app/lib/types';
 import { Revenue } from '@/app/lib/definitions';
-import { PublishedDate } from '@/app/lib/api-types';
+import { datepickerSeparator } from '@/app/constants';
+import { PublishedDate, initPublishedData } from '@/app/lib/api-types';
 
 export const formatCurrency = (amount: number) => {
   return (amount / 100).toLocaleString('en-US', {
@@ -10,12 +13,13 @@ export const formatCurrency = (amount: number) => {
 
 export const formatDateToLocal = (
   dateStr: string,
-  locale: string = 'en-US',
+  locale: string | undefined = 'en-US',
+  month: MonthType = 'short',
 ) => {
   const date = new Date(dateStr);
   const options: Intl.DateTimeFormatOptions = {
     day: 'numeric',
-    month: 'short',
+    month,
     year: 'numeric',
   };
   const formatter = new Intl.DateTimeFormat(locale, options);
@@ -84,7 +88,7 @@ export function setDate(published: PublishedDate) {
     return `&published_on=${publishedOn}`;
   }
 
-  if (published.publishedAfter) {
+  if (published.publishedAfter && !published.publishedBefore) {
     const publishedAfter = formatter.format(new Date(published.publishedAfter));
     return `&published_after=${publishedAfter}`;
   }
@@ -94,10 +98,19 @@ export function setDate(published: PublishedDate) {
       new Date(published.publishedBefore),
     );
 
-    // set the period to one month
-    const date = new Date(publishedBefore);
-    date.setMonth(date.getMonth() - 1);
-    const publishedAfter = formatter.format(date);
+    let publishedAfter = '';
+    if (published.publishedAfter) {
+      const publishedAfterFormatted = formatter.format(
+        new Date(published.publishedAfter),
+      );
+      publishedAfter = `&published_after=${publishedAfterFormatted}`;
+    } else {
+      // set the period to one month
+      const date = new Date(publishedBefore);
+      date.setMonth(date.getMonth() - 1);
+      publishedAfter = formatter.format(date);
+    }
+
     return `&published_after=${publishedAfter}&published_before=${publishedBefore}`;
   }
 
@@ -107,4 +120,45 @@ export function setDate(published: PublishedDate) {
   const publishedAfter = formatter.format(date);
 
   return `&published_after=${publishedAfter}`;
+}
+
+export function getRandomPagesArray(num: number, maxCount: number = 10) {
+  const count = Math.floor(num / limit);
+
+  return Array.from(Array(count).keys()).map(() =>
+    getRandomNumber(1, maxCount),
+  );
+}
+
+export function getRandomNumber(min: number = 1, max: number = 10) {
+  return Math.floor(Math.random() * max) + min;
+}
+
+export function definePublishedDate(date: string): PublishedDate | undefined {
+  if (!date) {
+    return undefined;
+  }
+
+  const published = date.split(datepickerSeparator);
+  if (published.length === 1) {
+    return { ...initPublishedData, publishedOn: date };
+  }
+
+  if (published.length === 2) {
+    const [after, before] = published;
+    return {
+      ...initPublishedData,
+      publishedAfter: after.trim(),
+      publishedBefore: before.trim(),
+    };
+  }
+
+  return initPublishedData;
+}
+
+export function multipleParams(params: string[]): string | undefined {
+  if (!params[0]) {
+    return undefined;
+  }
+  return params.join();
 }

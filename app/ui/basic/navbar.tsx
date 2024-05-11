@@ -61,7 +61,7 @@ const Navbar = () => {
       </div>
 
       {nav && (
-        <ul className="absolute left-0 top-0 flex h-screen w-full flex-col items-center justify-center bg-gradient-to-b from-black to-gray-800 text-gray-500">
+        <ul className="absolute left-0 top-0 z-[2] flex h-screen w-full flex-col items-center justify-center bg-gradient-to-b from-black to-gray-800 text-gray-500">
           {links.map(({ id, name, href }) => (
             <li
               key={id}

@@ -38,7 +38,11 @@ export default function TopStoriesListItem({ story }: { story: NewsType }) {
         </a>
         <div>
           {categories?.map((category) => {
-            return <span className="text-gray-400">#{category} </span>;
+            return (
+              <span key={`${uuid}-${category}`} className="text-gray-400">
+                #{category}
+              </span>
+            );
           })}
         </div>
       </div>

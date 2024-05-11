@@ -5,6 +5,7 @@ const config = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './node_modules/react-tailwindcss-datepicker/dist/index.esm.js',
   ],
   theme: {
     extend: {
@@ -31,6 +32,11 @@ const config = {
         '50%': { transform: 'rotateX(45deg) rotateY(45deg)' },
         '75%': { transform: 'rotateX(-45deg) rotateY(45deg)' },
         '100%': { transform: 'rotateX(45deg) rotateY(-45deg)' },
+      },
+      spin: {
+        '100%': {
+          transform: 'rotate(1turn)',
+        },
       },
     },
     container: {

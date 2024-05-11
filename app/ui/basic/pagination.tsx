@@ -10,18 +10,25 @@ import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 export default function Pagination({
   totalPages,
   bigNum = false,
+  q = '',
 }: {
   totalPages: number;
   bigNum?: boolean;
+  q?: string;
 }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get('page')) || 1;
   const maxTotalPages = totalPages > maxPageCount ? maxPageCount : totalPages;
 
-  const createPageURL = (pageNumber: number | string) => {
+  const createPageURL = (pageNumber: number | string, q?: string) => {
     const params = new URLSearchParams(searchParams);
     params.set('page', pageNumber.toString());
+
+    if (q) {
+      params.set('q', q.toString());
+    }
+
     return `${pathname}?${params.toString()}`;
   };
 
@@ -32,7 +39,7 @@ export default function Pagination({
       <div className="inline-flex">
         <PaginationArrow
           direction="left"
-          href={createPageURL(currentPage - 1)}
+          href={createPageURL(currentPage - 1, q)}
           isDisabled={currentPage <= 1}
         />
 
@@ -48,7 +55,7 @@ export default function Pagination({
             return (
               <PaginationNumber
                 key={`${page}-${Math.random()}`}
-                href={createPageURL(page)}
+                href={createPageURL(page, q)}
                 page={page}
                 position={position}
                 isActive={currentPage === page}
@@ -60,7 +67,7 @@ export default function Pagination({
 
         <PaginationArrow
           direction="right"
-          href={createPageURL(currentPage + 1)}
+          href={createPageURL(currentPage + 1, q)}
           isDisabled={currentPage >= maxTotalPages}
         />
       </div>

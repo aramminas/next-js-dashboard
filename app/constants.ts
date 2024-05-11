@@ -1,5 +1,17 @@
 export const defaultImage = '/customers/customer-icon.png';
 
+export const limit = 3; // the allowed limit of the free plan
+export const maxPageCount = 5000;
+export const datepickerSeparator = '~';
+export const dateValidation =
+  /(^\d{4}-\d{2}-\d{2}$)|(^\d{4}-\d{2}-\d{2} ~ \d{4}-\d{2}-\d{2}$)/g;
+
+export const contacts = {
+  email: 'news@company.com',
+  phone: '+1 (987) 1011 808',
+  address: '15 M. Mashtots Avenue, Yerevan, Armenia',
+};
+
 export const links = [
   {
     id: 1,
@@ -139,4 +151,4 @@ export const categories = {
   travel: 'travel',
 };
 
-export const maxPageCount = 5000;
+export const categoriesArray = Object.values(categories);
