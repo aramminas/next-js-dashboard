@@ -2,10 +2,10 @@
 
 import { useState, useRef } from 'react';
 import { useFormState } from 'react-dom';
-import { NewsType } from '@/app/lib/api-types';
 import { searchAllNews } from '@/app/lib/api';
 import { initDate, DateType } from '@/app/lib/types';
 import EmptyResult from '@/app/ui/basic/empty-result';
+import { NewsType, SearchState } from '@/app/lib/api-types';
 import SearchField from '@/app/ui/components/all-news/form/search-field';
 import AllNewsFilters from '@/app/ui/components/all-news/all-news-filters';
 import AllNewsContent from '@/app/ui/components/all-news/all-news-content';
@@ -21,7 +21,7 @@ export default function AllNewsForm({
   totalPages: number;
   latest: number;
 }) {
-  const initialState = { search: null };
+  const initialState: SearchState = { search: null };
   const ref = useRef<HTMLFormElement | null>(null);
   const [date, setDate] = useState<DateType>(initDate);
   const [showFilter, setShowFilter] = useState(false);
@@ -33,9 +33,11 @@ export default function AllNewsForm({
     data: searchData,
     meta: searchMeta,
     latest: searchLatest,
-  } = state;
+  }: SearchState = state;
 
-  const searchTotalPages = Math.floor(searchMeta?.found / searchMeta?.limit);
+  const searchTotalPages = searchMeta
+    ? Math.floor(searchMeta?.found / searchMeta?.limit)
+    : 0;
   const currentData = latest > (searchLatest || 0) ? data : searchData;
 
   function toggleFilter() {
@@ -49,18 +51,20 @@ export default function AllNewsForm({
   return (
     <>
       <form ref={ref} action={dispatch} className="w-full">
-        <SearchField
-          state={state}
-          show={showFilter}
-          toggleFilter={toggleFilter}
-        />
+        {state && (
+          <SearchField
+            state={state}
+            show={showFilter}
+            toggleFilter={toggleFilter}
+          />
+        )}
         <AllNewsFilters date={date} setDate={setDate} show={showFilter} />
       </form>
-      {currentData.length ? (
+      {currentData?.length ? (
         <AllNewsContent
           data={currentData}
           totalPages={searchTotalPages || totalPages}
-          search={search}
+          search={search || ''}
         />
       ) : (
         <EmptyResult />

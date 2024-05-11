@@ -65,4 +65,6 @@ export type SearchState = {
     search?: string[];
   };
   message?: string | null;
-};
+  search?: string | null;
+  latest?: number;
+} & Partial<Exclude<NewsData, 'errors'>>;

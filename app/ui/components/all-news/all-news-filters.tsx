@@ -23,8 +23,12 @@ export default function AllNewsFilters({
         },
       )}
     >
-      <Dropdown title="categories" data={categoriesArray} isMultiple={true} />
-      <Dropdown title="languages" data={languages} isMultiple={true} />
+      <Dropdown
+        title="categories"
+        dataArray={categoriesArray}
+        isMultiple={true}
+      />
+      <Dropdown title="languages" dataObj={languages} isMultiple={true} />
       <DateTimePicker date={date} setDate={setDate} isMultiple={true} />
     </div>
   );

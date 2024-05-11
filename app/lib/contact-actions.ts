@@ -2,6 +2,16 @@
 
 import { z } from 'zod';
 
+export type State = {
+  errors?: {
+    name?: string[];
+    email?: string[];
+    message?: string[];
+  };
+  message?: string | null;
+  data?: { success?: boolean; errors?: boolean };
+};
+
 const ContactFormSchema = z.object({
   name: z
     .string()
@@ -17,10 +27,7 @@ const ContactFormSchema = z.object({
     .min(3, { message: 'The message field must be filled in!' }),
 });
 
-export async function contact(
-  prevState: string | undefined,
-  formData: FormData,
-) {
+export async function contact(prevState: State, formData: FormData) {
   try {
     const validatedFields = ContactFormSchema.safeParse({
       name: formData.get('name'),

@@ -16,7 +16,7 @@ export default function DateTimePicker({
 }) {
   const [isRange, setRange] = useState(false);
 
-  const handleValueChange = (newValue) => {
+  const handleValueChange = (newValue: DateType) => {
     setDate(newValue);
   };
 
@@ -38,7 +38,7 @@ export default function DateTimePicker({
         asSingle={!isRange}
         maxDate={new Date()}
         inputName="published"
-        onChange={handleValueChange}
+        onChange={(value) => handleValueChange(value)}
         separator={datepickerSeparator}
         inputClassName="rounded-md w-full focus:ring-0 focus:border-gray-400 focus:ring-transparent font-normal bg-gray-50 border border-gray-300 dark:bg-green-900 dark:placeholder:text-green-100"
       />

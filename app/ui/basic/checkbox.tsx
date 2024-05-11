@@ -5,7 +5,7 @@ export default function Checkbox({
 }: {
   label: string;
   name: string;
-  callback: () => {};
+  callback: () => void;
 }) {
   return (
     <div className="me-4 ml-5 flex items-center">

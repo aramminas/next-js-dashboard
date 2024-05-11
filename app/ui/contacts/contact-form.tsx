@@ -17,7 +17,8 @@ export default function ContactForm() {
     email: '',
     message: '',
   };
-  const [{ errors, data }, dispatch] = useFormState(contact, initialState);
+  const [state, dispatch] = useFormState(contact, initialState);
+  const { errors, data } = state;
 
   return (
     <div className="container mx-auto px-8 xl:px-5">

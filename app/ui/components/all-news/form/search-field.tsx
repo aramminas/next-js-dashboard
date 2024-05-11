@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { SearchState } from '@/app/lib/api-types';
 import { FunnelIcon } from '@heroicons/react/24/outline';
 
 export default function SearchField({
@@ -7,7 +8,7 @@ export default function SearchField({
   toggleFilter,
 }: {
   show: boolean;
-  state: { errors: { search: string[] } };
+  state: SearchState;
   toggleFilter: () => void;
 }) {
   return (
@@ -72,14 +73,12 @@ export default function SearchField({
       </label>
       <div className="mx-auto mt-5 max-w-2xl">
         <div id="customer-error" aria-live="polite" aria-atomic="true">
-          {state?.errors &&
-            Object.keys(state.errors).map((key) =>
-              state.errors[key].map((error) => (
-                <p className="mt-2 text-sm text-red-500" key={error}>
-                  <span className="font-semibold">{key}:</span> {error}
-                </p>
-              )),
-            )}
+          {state?.errors?.search &&
+            state?.errors?.search.map((error) => (
+              <p className="mt-2 text-sm text-red-500" key={error}>
+                <span className="font-semibold">search:</span> {error}
+              </p>
+            ))}
         </div>
       </div>
     </>

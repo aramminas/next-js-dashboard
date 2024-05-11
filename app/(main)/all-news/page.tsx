@@ -25,7 +25,7 @@ export default async function AllNews({ searchParams }: AllNewsSearchParams) {
     <section className="container mx-auto mt-[35px] flex-1">
       <div className="flex flex-wrap">
         <AllNewsForm
-          page={page}
+          page={+page}
           data={data}
           totalPages={totalPages}
           latest={latest}

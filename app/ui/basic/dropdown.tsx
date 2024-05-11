@@ -5,11 +5,13 @@ import Checkbox from '@/app/ui/basic/checkbox';
 
 export default function Dropdown({
   title,
-  data,
+  dataArray,
+  dataObj,
   isMultiple = false,
 }: {
   title: string;
-  data: string[] | { [key: string]: string }[];
+  dataArray?: string[];
+  dataObj?: { [key: string]: string };
   isMultiple: boolean;
 }) {
   const [multiple, setMultiple] = useState(false);
@@ -41,25 +43,25 @@ export default function Dropdown({
         >
           Select option
         </option>
-        {Array.isArray(data)
-          ? data.map((item) => (
-              <option
-                key={item}
-                value={item}
-                className="block h-[30px] cursor-pointer px-2 py-2 capitalize transition-all hover:bg-gray-200 hover:font-bold hover:text-gray-700  dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                {item}
-              </option>
-            ))
-          : Object.keys(data).map((key) => (
-              <option
-                key={key}
-                value={key}
-                className="block h-[30px] cursor-pointer px-2 py-2 capitalize transition-all hover:bg-gray-200 hover:font-bold hover:text-gray-700  dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                {data[key]}
-              </option>
-            ))}
+        {dataArray?.map((item) => (
+          <option
+            key={item}
+            value={item}
+            className="block h-[30px] cursor-pointer px-2 py-2 capitalize transition-all hover:bg-gray-200 hover:font-bold hover:text-gray-700  dark:hover:bg-gray-600 dark:hover:text-white"
+          >
+            {item}
+          </option>
+        ))}
+        {!!dataObj &&
+          Object.keys(dataObj || {}).map((key) => (
+            <option
+              key={key}
+              value={key}
+              className="block h-[30px] cursor-pointer px-2 py-2 capitalize transition-all hover:bg-gray-200 hover:font-bold hover:text-gray-700  dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              {dataObj[key]}
+            </option>
+          ))}
       </select>
     </div>
   );

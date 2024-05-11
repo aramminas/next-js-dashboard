@@ -1,3 +1,5 @@
+import { DateValueType } from 'react-tailwindcss-datepicker';
+
 export type MonthType = 'numeric' | '2-digit' | 'long' | 'short' | 'narrow';
 
 export type PageProps = {
@@ -7,16 +9,13 @@ export type PageProps = {
   };
 };
 
-export type DateType = {
-  startDate: null | string;
-  endDate: null | string;
-};
+export type DateType = DateValueType;
 
-export const initDate: DateType = {
+export const initDate: DateValueType = {
   startDate: null,
   endDate: null,
 };
 
 export type SetDate = (
-  value: ((prevState: DateType) => DateType) | DateType,
+  value: ((prevState: DateValueType) => DateValueType) | DateValueType,
 ) => void;
